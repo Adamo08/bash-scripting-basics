@@ -25,8 +25,7 @@ This is a **full beginner's course** on **shell scripting** that will take you f
    - [Quoting](#quoting)
 4. [Conditionals and Control Flow](#4-conditionals-and-control-flow)
    - [`if` Statements](#if-statements)
-   - [`else` and `elif` Statements](#else-and-elif-statements)
-   - [Using Conditions (`test`, `[ ]`, `[[ ]]`)](#using-conditions)
+   - [Using Conditions (`test`, `[ ]`, `[[ ]]`)](#using-conditions-test)
    - [`case` Statements](#case-statements)
 5. [Loops](#5-loops)
    - [`for` Loops](#for-loops)
@@ -292,6 +291,65 @@ fi
 ```
 
 ### **Using Conditions (`test`, `[ ]`, `[[ ]]`)**
+
+
+`test`, `[ ]`, and `[[ ]]` are used to evaluate conditions in shell scripts, but they have some differences:
+
+#### **1. `test` and `[ ]`**
+
+- `test` is a command that evaluates conditions. It can also be written using the `[ ]` shorthand.
+- Both `test` and `[ ]` support basic comparisons and are POSIX-compliant, meaning they work on all Unix-like systems.
+- Example:
+
+```bash
+if test "$NUM1" -eq "$
+
+NUM2"; then
+  echo "Numbers are equal"
+fi
+
+# Equivalent to
+if [ "$NUM1" -eq "$NUM2" ]; then
+  echo "Numbers are equal"
+fi
+```
+
+#### **2. `[[ ]]`**
+
+- `[[ ]]` is an enhanced version of `[ ]` with additional functionality, such as pattern matching and better support for complex expressions.
+- It is **bash-specific** (not POSIX), meaning it won't work on all shells, but it is more powerful.
+- Example:
+
+```bash
+if [[ "$STRING" =~ ^[a-z]+$ ]]; then
+  echo "String is lowercase"
+fi
+```
+
+#### **3. Key Differences:**
+
+- `[[ ]]` allows for more complex conditionals and doesn’t require escaping certain characters, while `[ ]` is more limited and requires careful quoting and escaping.
+- `[[ ]]` is considered safer when using string comparisons because it prevents many unexpected issues caused by shell expansions.
+
+#### **Example Script: Comparing Numbers and Strings**
+
+```bash
+#!/bin/bash
+
+NUM1=10
+NUM2=20
+
+if [ "$NUM1" -lt "$NUM2" ]; then
+  echo "$NUM1 is less than $NUM2"
+fi
+
+STR="hello"
+
+if [[ "$STR" =~ ^[a-z]+$ ]]; then
+  echo "$STR contains only lowercase letters"
+fi
+```
+
 
 #### **Comparison Operators:**
 
