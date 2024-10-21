@@ -1,0 +1,10 @@
+1. Hello, world!
+2. This is a test file for the filtering script.
+3. It contains several lines of text: 42, 7, and 13.
+4. Some lines will match specific patterns, like 100% and 50%.
+5. For example, let's see if we can find the word 'test' in line 4.
+6. Another line for testing with numbers: 1234567890.
+7. This line is here just to confuse the pattern matching.
+8. End of the test file. Remember, 3 is a magic number!
+9. Special characters: #, $, %, &, and * are included.
+10. Are you ready to test the script? 42 is the answer to life!
